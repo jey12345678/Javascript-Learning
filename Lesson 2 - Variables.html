@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+    
+    var myName = "Arya";
+
+    //var is short for a variable, and its a Javascript keyword that creates and declares a new variable.
+    //myName is the variable's name. Capitalizing in this way is just the standard convention in JavaScript called camel casing.
+    //= is the assignment operator, and assigns Arya to the variable, myName.
+    //After  myName is declared, the string value Arya, is printed to the console by referencing the variable name.
+
+    //Variable rules
+
+    //Variables cannot start with numbers.
+    //Variables are case sensitive so myName and myname would be completely different.
+    //Variable names cannot be the same as keywords.
+
+    var favouriteFood = "pizza";
+    var numOfSlices = 8;
+
+    console.log(favouriteFood);
+    console.log(numOfSlices);
+
+    //let is a keyword that signals that the variable could be reassigned to a different value.
+
+    let meal = "Enchiladas";
+    console.log(meal); //Outputs Enchiladas
+    meal = "Burrito";
+    console.log(meal) //Outputs Burrito
+
+
+    //When I declare a variable, I don't have to assign it a value.
+    let price;
+    console.log(price); //Outputs undefined.
+    price = 350;
+    console.log(price); //Outputs 350
+
+    let changeMe = true;
+    changeMe = false;
+    console.log(changeMe);
+
+    //const variable cannot be reassigned because its a const variable.
+    //const variables must be assigned a value when declared or else you will get a syntax error.
+    const entree = "Enchiladas";
+    console.log(entree);
+    entree = "Tacos";
+
+
+    //Mathematical Assignment Operators
+    //Accumulating variable w = w+1
+    //Or we could use w += 1 as well, as it does the same thing.
+    //The same thing could be applied to subtraction, multiplication and division, -=,*=,/=
+
+    let levelUp = 10;
+    let powerLevel = 9001;
+    let multiplyMe = 32;
+    let quarterMe = 1152;
+
+    // Use the mathematical assignments in the space below:
+    levelUp += 5;
+    powerLevel -= 100;
+    multiplyMe *= 11;
+    quarterMe /= 4;
+
+    // These console.log() statements below will help you check the values of the variables.
+    // You do not need to edit these statements. 
+    console.log('The value of levelUp:', levelUp); 
+    console.log('The value of powerLevel:', powerLevel); 
+    console.log('The value of multiplyMe:', multiplyMe); 
+    console.log('The value of quarterMe:', quarterMe);
+
+    //There is also the Increment and Decrement Operator which are ++, and --.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
