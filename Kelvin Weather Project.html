@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Kelvin Weather
+
+    //Coverting Kelvin Weather into Celsius degrees, and then into Fahrenheit degrees
+    //and then newton degrees.
+
+    //By: Jeyason Jeyaparan
+
+    //Creates variable called kelvin and sets it equal to 293.
+    //By using variables, I could change my Kelvin value and find out its value in Fahrenheit.
+    //let kelvin = 0;
+    let kelvin = 293;
+
+    //Creates a variable called celsius that stores converted amount of kelvin degrees into celsius degrees.
+    let celsius = kelvin - 273;
+
+    //Calculate the Fahrenheit of the temperature.
+    let fahrenheit = celsius*(9/5) + 32;
+    console.log(fahrenheit);
+
+    //Round down the Fahrenheit temperature.
+    fahrenheit = Math.floor(fahrenheit);
+
+    console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`)
+
+    //Convert the celsius temperature to Newton temperature and store it in newton variable.
+    let newton = celsius*(33/100);
+
+    newton = Math.floor(newton);
+
+    console.log(`The temperature is ${newton} Newton degrees.`)
+
+</script>
+
+</body>
+</html>

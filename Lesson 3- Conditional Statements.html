@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //If statements are used to get the program to perform a task based on a condition.
+
+    //If the sale is true, than Time to buy will be printed onto the console, but if its false, it won't be printed onto the console.
+    let sale = true;
+    //let sale = false;
+
+    if(sale === true){
+        console.log("Time to buy!")
+    }
+
+    //if- else statements
+    //If our condition is false, then we want our code to run something else, so that's where the else statment comes.
+
+    //else statement must be paired with an if statement.
+
+    sale = true;
+
+    sale = false;
+
+    if(sale) {  
+    console.log('Time to buy!');
+    }
+    else{
+        console.log("Time to wait for a sale.");
+    }
+
+    //Comparison Operators, used to compare different values.
+
+    //Less than: <
+
+    //Greater than: >
+
+    //Less than or equal to: <=
+
+    //Greater than or equal to: >=
+
+    //is equal to: ===
+
+    //is not equal to: !==
+
+    let hungerLevel = 7;
+
+    if(hungerLevel > 7){
+        console.log("Time to eat!");
+    }
+    else{
+        console.log("We can eat later!")
+    }
+
+    //Logical Operators
+
+    //We use logical operators to add more sophisticated logic to our conditionals.
+
+    //and operator(&&),both conditions must evaluate to true.
+
+    //or operator(||), only one of the conditions needs to evaluate to true.
+
+    //not operator, otherwise known as the bang operator, it will take a true value and pass back false, or it will take a false value and pass back true.
+
+    let mood = 'sleepy';
+    let tirednessLevel = 6;
+
+    if(mood === "sleepy" && tirednessLevel > 8){
+        console.log("time to sleep");
+    }
+    else{
+        console.log("not bed time yet");
+    }
+
+    //Truthy and Falsy
+
+    //the code block in the if statement will run if the variable  has a truthy value
+
+    //a falsy value would be, 0, "",'',null,undefined,NaN(Not a Number)
+
+    //Truthy Example
+
+    let wordCount = 1;
+
+    if (wordCount) {
+        console.log("Great! You've started your work!");
+    } 
+    else {
+        console.log('Better get to work!');
+    }
+
+
+    let favoritePhrase = 'lol';
+
+    if (favoritePhrase) {
+        console.log("This string doesn't seem to be empty.");
+    } 
+    else {
+        console.log('This string is definitely empty.');
+    }
+
+    //Falsy Example
+
+    wordCount = 0;
+
+    if (wordCount) {
+        console.log("Great! You've started your work!");
+    } 
+    else {
+        console.log('Better get to work!');
+    }
+
+
+    favoritePhrase = '';
+
+    if (favoritePhrase) {
+        console.log("This string doesn't seem to be empty.");
+    } 
+    else {
+        console.log('This string is definitely empty.');
+    }
+
+    //Truthy and Falsy Assignments
+
+    //Open to a world of short-hand possiblities.
+    
+    //Short Circuit Evaluation
+
+    //Using logical operators to give a value to a variable.
+
+    //Ex. When tool is defined as marker or anything other than a "", it prints out The marker is mightier than the sword.
+    let tool = 'marker';
+
+    // Use short circuit evaluation to assign  writingUtensil variable below:
+    let writingUtensil = tool || "pen";
+
+    console.log(`The ${writingUtensil} is mightier than the sword.`);
+
+    //Or if the tool is defined as a "", than it prints out The pen is mightier than the sword.
+
+    tool = '';
+
+    // Use short circuit evaluation to assign  writingUtensil variable below:
+    writingUtensil = tool || "pen";
+
+    console.log(`The ${writingUtensil} is mightier than the sword.`);
+
+    //Ternary Operator is used to simplify an if else statement.
+
+    //The condition isNightTime is provided before the ?.
+
+    //Two expressions follow the ? and are seperated by a colon.
+
+    //If the condition evaluates to true, the first expression gets executed.
+
+    //If the condition evaluates to false, the second expression gets executed.
+
+    let isLocked = false;
+
+    isLocked ? console.log('You will need a key to open the door.') : console.log('You will not need a key to open the door.');
+
+
+    let isCorrect = true;
+
+    isCorrect ? console.log('Correct!') : console.log('Incorrect!');
+
+    favoritePhrase = 'Love That!';
+
+    favoritePhrase === "Love That!" ? console.log('I love that!'): console.log("I don't love that!");
+
+    //else if statements
+
+    //else if statements allows for more than two possible outcomes.
+
+    //else if statement comes after if statment but before the else statement.
+
+    let season = 'summer';
+
+    if (season === 'spring') {
+        console.log('It\'s spring! The trees are budding!');
+    }
+    else if(season === "winter"){
+        console.log('It\'s winter! Everything is covered in snow.');
+    }
+    else if(season === "fall"){
+        console.log('It\'s fall! Leaves are falling!');
+    }
+
+    else if(season === "summer"){
+        console.log('It\'s sunny and warm because it\'s summer!');
+    }
+
+    else {
+        console.log('Invalid season.');
+    }
+
+    //Swtich keyword
+
+    //Alternative syntax that is easier to read and write than if- else statements.
+
+    let athleteFinalPosition = 'first place';
+
+    switch(athleteFinalPosition){
+
+        case 'first place':
+            console.log("You get the gold medal!");
+            break;
+        case 'second place':
+            console.log("You get the silver medal!");
+            break;
+        case "third place":
+            console.log("You get the bronze medal!");
+            break;
+        default:
+            console.log("No medal awarded.");
+            break;
+  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
