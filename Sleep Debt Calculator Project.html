@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Sleep Debt Calculator
+
+    //By: Jeyason Jeyaparan
+
+    function getSleepHours(day){
+
+    switch(day){
+        case "monday":
+            return 6;
+            break;
+        case "tuesday":
+            return 7;
+            break;
+        case "wednesday":
+            return 6;
+            break;
+        case "thursday":
+            return 5;
+            break;
+
+        default:
+            return 4;
+            break;
+        }
+    }
+
+    //console.log(getSleepHours("friday"));
+
+    const getActualSleepHours = function(){
+        let totalHours = getSleepHours("monday")+getSleepHours("tuesday") + getSleepHours("wednesday") + getSleepHours("thursday") + getSleepHours("friday");
+
+        return totalHours;
+    }
+    const getIdealSleepHours = (idealHours) =>{
+
+        return 7*idealHours;
+    }
+
+    const calculateSleepDebt = () =>{
+        let actualSleepHours = getActualSleepHours();
+        let idealSleepHours = getIdealSleepHours(4);
+
+        if(actualSleepHours === idealSleepHours){
+            console.log("You got the perfect amount of sleep!");
+        }
+        else if(actualSleepHours > idealSleepHours){
+            let difference = actualSleepHours - idealSleepHours
+            console.log("You got more sleep than needed by "+difference+" hours.");
+        }
+        else{
+            let difference = idealSleepHours - actualSleepHours
+            console.log("You should get some rest. Your sleep debt is "+difference+" hours.");
+        }
+    }
+    calculateSleepDebt();
+
+
+</script>
+
+</body>
+</html>

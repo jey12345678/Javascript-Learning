@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Functions Lesson
+
+    //function declaration consists of the function keyword, the name of the function, followed by parentheses, the function body or the block of statements required to perform a specific task.
+
+    function getReminder(){
+        console.log("Water the plants.");
+    }
+
+    function greetInSpanish(){
+        console.log("Buenas Tardes");
+    }
+
+    //Calling a Function
+
+    function sayThanks(){
+        console.log("Thank you for your purchase! We appreciate your business.");
+    }
+
+    //Call function
+    sayThanks();
+    sayThanks();
+    sayThanks();
+
+    //Parameters and Arguments
+
+    //When declaring a function, you could specify its parameters, which allow functions to accept inputs and perform tasks using inputs.
+
+    //The values that are passed to a function when its called is called the arguments.
+
+    function sayThanks(name) {
+        console.log('Thank you for your purchase '+ name + '! We appreciate your business.');
+    }
+
+    sayThanks("Cole");
+
+    //Default Parameters 
+    
+    //Default Parameters allow parameters to have a predetermined value in case no argument is passed into the function.
+
+    function makeShoppingList(item1 = "milk", item2 = "bread", item3 = "eggs"){
+        console.log(`Remember to buy ${item1}`);
+        console.log(`Remember to buy ${item2}`);
+        console.log(`Remember to buy ${item3}`);
+    }
+
+    makeShoppingList();
+
+    //Return
+
+    //When a function needs to return a result to the main program use return keyword.
+
+    function monitorCount(rows,columns){
+        let numOfMonitors = rows*columns;
+        return numOfMonitors;
+
+    }
+
+    const numOfMonitors = monitorCount(5,4);
+    console.log(numOfMonitors);
+
+    //Helper Function
+
+    //Functions being called within another function are called helper functions.
+
+    function monitorCount(rows, columns) {
+        return rows * columns;
+    }
+
+    function costOfMonitors(rows,columns){
+        let totalMonitorCost = monitorCount(rows,columns)*200;
+
+        return totalMonitorCost;
+    }
+
+    const totalCost = costOfMonitors(5,4);
+
+    console.log(totalCost);
+
+    //Function Expressions
+
+    //Use function keyword to define a function inside an expression.
+
+/*     const plantNeedsWater = function(day){
+        if(day === "Wednesday"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    plantNeedsWater("Tuesday");
+
+    console.log(plantNeedsWater("Tuesday")); */
+
+    //Arrow Functions
+
+    //Shorter way to write functions using "fat arrow" () => notation.
+
+    //remove the need to type keyword function, to create a new function.
+
+/*     const plantNeedsWater = (day) => {
+
+        if(day === "Wednesday"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    plantNeedsWater("Tuesday");
+
+    console.log(plantNeedsWater("Tuesday")); */
+
+    //Concise Body Arrow Functions
+
+    //We could refactor the arrow function to its most condensed form known as concise body.
+
+    //From just a regular arrow function
+
+   /*  const plantNeedsWater = (day) => {
+        return day === 'Wednesday' ? true : false;
+    };
+    */
+
+    //To a concise body arrow function.
+    const plantNeedsWater = day => day === 'Wednesday' ? true : false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
