@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Loops
+
+    //Repeating Tasks Manually
+
+    //It is super time consuming to type out the same code every single time if an action is needed to be repeated.
+
+    let vacationSpots = ["England","America","Sri Lanka"];
+
+    console.log(vacationSpots[0]);
+    console.log(vacationSpots[1]);
+    console.log(vacationSpots[2]);
+
+    //The For Loop
+
+    //Includes iterator variable that appears in all three expressions.
+
+    //Iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration.
+
+    //Iterator variables have any name, but its best practice to use a descriptive variable name.
+
+    //For loop contains three expressions seperated by ; inside the parentheses.
+
+    //1.An initialization starts the loop and can also be used to declare the iterator variable.
+
+    //2.Stopping condition is the condition that the iterator variable is evaluated against, if the condition is true, the code block will run but if its false the code will stop.
+
+    //3.An iteration statement is used to update the iterator variable on each loop.
+
+    for(let counter = 5; counter <=10;counter++){
+
+        console.log(counter);
+    }
+
+    //Looping in Reverse
+
+    // The loop below loops from 0 to 3. Edit it to loop backwards from 3 to 0
+    for (let counter = 3; counter >=0; counter--){
+        console.log(counter);
+    }
+
+    //Looping through Arrays
+
+    //Loops are handy for looping through arrays, and the iterator variable is usually an i, which stands for index.
+
+    const vacationSpots2 = ['Bali', 'Paris', 'Tulum'];
+
+    for(let i = 0; i < vacationSpots2.length; i++){
+        console.log("I would love to visit "+ vacationSpots2[i]);
+
+    }
+
+    //Nested Loops
+
+    //If we have a loop running inside another loop its called a nested loop.
+
+    //We use for loops to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
+
+    let bobsFollowers = ["Jeyason","Kian","Dhiaa","Jerry"];
+
+    let tinasFollowers = ["Jeyason","Kian","Julie"];
+
+    let mutualFollowers = [];
+
+    for(let i = 0; i < bobsFollowers.length;i++){
+    let followerOne = bobsFollowers[i];
+
+        for(let j = 0; j< tinasFollowers.length;j++){
+            let followerTwo = tinasFollowers[j];
+
+            if(followerOne === followerTwo){
+                mutualFollowers.push(followerOne);
+            }
+        }
+    }
+
+    //The While Loop
+
+    //Syntax for a for loop is ideal when we know how many times the loop should run but for a while loop, when we want a loop to execute an undetermined # of times, while loops are the best choice.
+
+    const cards = ['diamond', 'spade', 'heart', 'club'];
+
+    let currentCard;
+
+    while (currentCard !== "spade"){
+        currentCard = cards[Math.floor(Math.random()*4)];
+        console.log(currentCard);
+
+    }
+
+    //do while statements
+
+    //If I want a piece of code to run at least once and then that loop is based on a specific condition after its initial run, the do- while statement comes in.
+
+    const cupsOfSugarNeeded = 5;
+
+    let cupsAdded = 0;
+
+    //We have a sweet tooth, so we want to add at least one cup of sugar to the batter even if the value of cupsOfSugarNeeded is 0.
+    do{
+        cupsAdded = cupsAdded+1;
+
+    }while(cupsAdded < cupsOfSugarNeeded);
+
+    //Break keyword
+
+    //The break keyword allows programs to break out of the loop from within the loop's block.
+    //They are helpful when we are looping through large data structures! With breaks, we could add test conditions besides the stopping condition and exit the loop when they're met.
+
+    const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+
+    for(let i = 0; i< rapperArray.length;i++){
+
+        console.log(rapperArray[i]);
+
+        if(rapperArray[i] === "Notorious B.I.G."){
+            break;
+        }
+    }
+
+    console.log("And if you don't know, now you know.");
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

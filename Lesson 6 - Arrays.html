@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Array
+
+    //By: Jeyason Jeyaparan
+
+    //Creating an Array
+
+    //One way we could create an array is to use an array literal using square brackets.
+
+    const hobbies = ["Coding","Running","Playing Games"];
+
+    console.log(hobbies);
+
+    //Accessing Elements
+
+    //Arrays are zero-indexed meaning that the positions start counting from 0 instead of 1.
+
+    //We could access individual items in the array using their index.
+
+    const famousSayings = ['Fortune favors the brave.', 'A joke is a very serious thing.', 'Where there is love there is life.'];
+
+    let listItem = famousSayings[0];
+
+    console.log(famousSayings[2]);
+
+    //Undefined is logged to the console.
+    console.log(famousSayings[3]);
+
+    //Update Elements
+
+    //Once I have access to an element in an array I could update its value.
+
+    let groceryList = ['bread', 'tomatoes', 'milk'];
+    groceryList[1] = "avocados";
+
+    //Arrays with let and const
+
+    //We could change the contents of a const array but cannot reassign a new array or a different value.
+
+    let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+
+    const utensils = ['Fork', 'Knife', 'Chopsticks', 'Spork'];
+
+    condiments[0] = "Mayo";
+
+    console.log(condiments);
+
+    condiments = [condiments[0]];
+
+    //I could re-assign elements in an array and re-assign the entire new array to variable using the let keyword.
+    console.log(condiments);
+
+    utensils[3] = "Spoon";
+
+    //I cannot re-assign the entire new array to variable using the const keyword, but I could change the values in the array.
+
+    //This causes an error
+    //utensils = [utensils[3]];
+
+    console.log(utensils);
+
+    //.length property
+
+    //One of array's built in properties is length and it returns number of items in the array.
+
+    const objectives = ['Learn a new languages', 'Read 52 books', 'Run a marathon'];
+    console.log(objectives.length);
+
+    //.push() Method
+
+    //.push() allows us to add items to the end of an array.
+
+    const chores = ['wash dishes', 'do laundry', 'take out trash'];
+
+    chores.push("work on coding");
+    chores.push("eat food");
+
+    console.log(chores);
+
+    //.pop() method.
+
+    //This method removes the last item of an array.
+
+    const chores2 = ['wash dishes', 'do laundry', 'take out trash', 'cook dinner', 'mop floor'];
+
+    chores2.pop();
+    console.log(chores2);
+
+    //More Array methods.
+
+    //I could read more about the array methods that exist on the Mozilla Developer Network (MDN) array documentation.
+
+    //Some array methods that are avaliable to developers include, join(), slice(), splice(), shift(), unshift(), concat().
+
+    const groceryList2 = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+
+    groceryList2.shift();
+    console.log(groceryList2);
+
+    groceryList.unshift("popcorn");
+    console.log(groceryList2);
+
+    console.log(groceryList2.slice(1,4));
+
+    console.log(groceryList2);
+
+    const pastaIndex = groceryList2.indexOf("pasta");
+
+    console.log(pastaIndex);
+
+    //Arrays and Functions
+
+    //.push() method mutates or changes an array.
+
+    //When you pass an array into a function, if the array is mutated inside the function, that change will be maintained outside the function as well.
+
+    //Concept is explained as a pass by reference as well since what we're actually passing the function is a reference to where the variable memory is stored and changing the memory.
+
+    const concept = ['arrays', 'can', 'be', 'mutated'];
+
+    function changeArr(arr){
+    arr[3] = 'MUTATED';
+    }
+
+    changeArr(concept);
+
+    console.log(concept);
+
+    const removeElement = (newArr) => newArr.pop();
+
+    removeElement(concept);
+
+    console.log(concept);
+
+    //In both cases, the change to the array was maintained outside of the function.
+
+    //Nested Array
+
+    //Arrays could store other arrays, so when an array contains another array its called a nested array.
+
+    const numberClusters = [[1,2],[3,4],[5,6]];
+    const target = numberClusters[2][1];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
