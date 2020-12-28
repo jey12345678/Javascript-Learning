@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Mini Linter Project
+
+    //By: Jeyason Jeyaparan
+
+    //Improving the quality of paragraph and gathering information about a paragraph.
+
+    let story = 'Last weekend, I took literally the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it actually stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It\'s really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some extremely artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is actually very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an extremely beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you actually cross back into New York! At this point, you are very close to the end.';
+
+    let overusedWords = ['really', 'very', 'basically'];
+
+    let unnecessaryWords = ['extremely', 'literally', 'actually' ];
+
+    let storyWords = story.split(" ");
+
+    console.log(storyWords);
+
+    console.log("The word count of the entire story including the unnecessary words is "+ storyWords.length+".");
+
+    let betterWords = storyWords.filter((word) =>{
+        if(unnecessaryWords.includes(word) === false){
+            return word;
+        }
+    });
+    console.log(betterWords);
+
+    console.log("The word count of the filtered words of the story is "+betterWords.length+".");
+
+    let totalNumOfReally = 0;
+    let totalNumOfBasically = 0;
+    let totalNumOfVery = 0;
+
+    betterWords.forEach((word) =>{
+
+        if(word === "really"){
+            totalNumOfReally++;
+        }
+        else if(word === "very"){
+            totalNumOfVery++;
+        }
+        else if(word === "basically"){
+            totalNumOfBasically++;
+        }
+    
+    });
+
+    console.log("The total number of times really appears is "+totalNumOfReally+" times.");
+
+    console.log("The total number of times very appears is "+totalNumOfVery+" times.");
+
+    console.log("The total number of times basically appears is "+totalNumOfBasically+" times.");
+
+
+
+    let numOfSentences = 0;
+
+    betterWords.forEach((word) =>{
+
+        if(word.includes(".") || word.includes("!")){
+            numOfSentences++;
+
+        }
+    });
+
+    console.log("The number of sentences in the paragraph is "+numOfSentences+".");
+
+    console.log(betterWords.join(" "));
+
+    function removeWords(arr,overusedWord,overusedWords){
+
+        let counter = 0;
+
+        arr = arr.filter((word) =>{
+
+            if(word === overusedWord && counter === 0){
+                counter++;
+                return word;
+            }
+            else if(word !== overusedWord){
+                return word;
+            }
+        });
+        return arr;
+    }
+
+    for(let i = 0; i< overusedWords.length;i++){
+        betterWords = removeWords(betterWords,overusedWords[i],overusedWords);
+    }
+
+    console.log("Removing every other time that the overused words appear.")
+
+    console.log(betterWords);
+
+    const greatestTimes = (arr) =>{
+        let maximumNumber = 1;
+        let maxWord = arr[0];
+        
+        for(let i = 0; i < arr.length; i++){
+            let amountOfTimes = 1;
+            word = arr[i];
+
+            for(let j = i+1; j< arr.length;j++){
+
+                currentWord = arr[j];
+
+                if(word.toLowerCase() == currentWord.toLowerCase()){
+                amountOfTimes++;
+                }
+            }
+
+            if(amountOfTimes > maximumNumber){
+                maximumNumber = amountOfTimes;
+                maxWord = arr[i];
+
+            }
+            console.log(maximumNumber);
+        }
+        return maxWord;
+    }
+
+    //Finds the word that appears the greatest amount of times  in betterWords array.
+    console.log(greatestTimes(betterWords));
+
+    //Replacing the overused words with something else.
+    function replaceWords(arr,overusedWord,overusedWords){
+        let counter = 0;
+
+         arr = arr.map((word) =>{
+
+            if(word === overusedWord){
+                return "OVERUSED WORD";
+            }
+
+            else{
+                return word;
+            }
+        });
+        return arr;
+    }
+
+    for(let i = 0; i< overusedWords.length;i++){
+        betterWords = replaceWords(betterWords,overusedWords[i],overusedWords);
+    }
+
+    console.log(betterWords);
+
+
+
+</script>
+
+</body>
+</html>

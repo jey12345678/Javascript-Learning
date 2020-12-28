@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Objects
+
+    //Creating Object Literals
+
+    //Objects can be assigned to variables just like any JavaScript tpye. We could use curly braces, {}, to designate an object literal.
+    let fasterShip = {"Fuel Type":"Turbo Fuel",color: "silver"};
+
+    //Accessing Properties
+
+    //Two ways that we could access an object's property, the first way is through dot notation.
+
+    let spaceship = {
+        homePlanet: 'Earth',
+        color: 'silver',
+        'Fuel Type': 'Turbo Fuel',
+        numCrew: 5,
+        flightPath: ['Venus', 'Mars', 'Saturn']
+    };
+
+    let crewCount = spaceship.numCrew;
+
+    let planetArray = spaceship.flightPath;
+
+    //Bracket Notation
+
+    //The second way to access a key's value is by using bracket notaiton.
+
+    let spaceship2 = {
+        'Fuel Type' : 'Turbo Fuel',
+        'Active Mission' : true,
+        homePlanet : 'Earth', 
+        numCrew: 5
+    };
+
+    let propName =  'Active Mission';
+
+    let isActive = spaceship2["Active Mission"];
+
+    console.log(spaceship2[propName]);
+
+    //Property Assignment
+
+    //Objects are mutable meaning that we could update them after we create them!
+
+    let spaceship3 = {
+        'Fuel Type' : 'Turbo Fuel',
+        homePlanet : 'Earth',
+        color: 'silver',
+        'Secret Mission' : 'Discover life outside of Earth.'
+    };
+
+    spaceship3.color = "glorious gold";
+
+    spaceship3.numEngines = 1;
+
+    delete spaceship3["Secret Mission"];
+
+    //Methods
+
+    //When the data stored on an object is a function, we call that a method.
+
+    let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+
+    let alienShip = {
+
+        retreat(){
+            console.log(retreatMessage);
+        },
+        takeOff(){
+            console.log("Spim... Borp... Glix... Blastoff!");
+        }
+    }
+
+    alienShip.retreat();
+    alienShip.takeOff();
+
+    //Nested Objects
+
+    //Objects are often nested, so an object might have another object as a property which in turn could have a property that's an array of even more objects!
+
+    let spaceship4 = {
+        passengers: [{name:"Space Dog"}],
+
+        telescope: {
+            yearBuilt: 2018,
+            model: "91031-XLT",
+            focalLength: 2032 
+        },
+        crew: {
+            captain: { 
+                name: 'Sandra', 
+                degree: 'Computer Engineering', 
+                encourageTeam() { console.log('We got this!') },
+                'favorite foods': ['cookies', 'cakes', 'candy', 'spinach']
+            }
+        },
+        engine: {
+            model: "Nimbus2000"
+        },
+        nanoelectronics: {
+            computer: {
+                terabytes: 100,
+                monitors: "HD"
+            },
+            'back-up': {
+                battery: "Lithium",
+                terabytes: 50
+            }
+        }
+    };
+
+    let capFave = spaceship4.crew.captain["favorite foods"][0];
+
+    let firstPassenger = spaceship4.passengers[0];
+
+    //Pass By Reference
+
+    //Objects are passed by reference, which means that when we pass a variable assigned to an object into a function as an argument, the computer interprets the parameter name as pointing to the space in memory holding that object.
+
+    let spaceship5 = {
+        'Fuel Type' : 'Turbo Fuel',
+        homePlanet : 'Earth'
+    };
+
+    function greenEnergy(ship){
+        ship["Fuel Type"] = "avocado oil";
+    }
+
+    function remotelyDisable(ship){
+        ship.disabled = true;
+    }
+
+    greenEnergy(spaceship5);
+    remotelyDisable(spaceship5);
+
+    console.log(spaceship5);
+
+    //Looping through objects
+
+    //for... in will execute a given block of code for each property in an object.
+
+    let spaceship6 = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+for(let crewMember in spaceship6.crew){
+  console.log(`${crewMember}: ${spaceship6.crew[crewMember].name}`);
+}
+
+for(let crewMember in spaceship6.crew){
+  console.log(`${spaceship6.crew[crewMember].name}: ${spaceship6.crew[crewMember].degree}`);
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
