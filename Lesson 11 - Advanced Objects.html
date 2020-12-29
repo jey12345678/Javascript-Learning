@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Advanced Objects
+
+    //The this Keyword
+
+    //Objects are collections of related data and functionality.
+
+    //We use the this keyword to reference the calling object which provides access to the calling object's properties.
+
+    //Calling object is goa, and by using this, we are accessing the goat object itself, and then the dietType property of goat by using properly dot notation.
+
+    const robot = {
+        model: "1E78V2",
+        energyLevel: 100,
+
+        provideInfo(){
+            return `I am ${this.model} and my current energy level is ${this.energyLevel}`;
+        }
+    };
+
+    console.log(robot.provideInfo());
+
+    //Arrow Functions and this
+
+    //Arrow functions inherently bind or tie an already defined this value to the function itself that is NOT the calling object.
+
+    //The value of this is the global object or an object that exists in the global scope which doesn't have that property and therefore returns undefined.
+
+    const robotTwo = {
+        energyLevel: 100,
+        checkEnergy(){
+            console.log(`Energy is currently at ${this.energyLevel}%.`)
+        }
+    }
+
+    robotTwo.checkEnergy();
+
+    //Privacy
+
+    //Accessing and updating properties is fundamental in working with objects.
+
+    //However, there are cases in which we don't want other code simply accessing and updating an object's properties.
+
+    //When discussing privacy in objects, we define it as the idea that only certain properties should be mutable or able to change in value.
+
+    const robotThree = {
+        _energyLevel: "high",
+        recharge(){
+            this._energyLevel += 30;
+            console.log(`Recharged! Energy is currently at ${this._energyLevel}%.`)
+        }
+    };
+
+    //Side effect of type-coercion.
+    robotThree.recharge();
+
+    //Getters
+
+    //Getters are methods that get and return the internal properties of an object.
+
+    //They do more than just retrieve the value of a property!
+
+    const robotFour = {
+        _model: '1E78V2',
+        _energyLevel: 100,
+
+        get energyLevel(){
+
+            if(typeof this._energyLevel === "number"){
+            return "My current energy level is "+this._energyLevel;
+            }
+            else{
+            return "System malfunction: cannot retrieve energy level";
+            }
+
+        }
+    
+    };
+
+    console.log(robotFour.energyLevel);
+
+    //Setters
+
+    //Along with getter methods, we could also create setter methods which reassign values of the existing properties within an object.
+
+    const robotFive = {
+        _model: '1E78V2',
+        _energyLevel: 100,
+        _numOfSensors: 15,
+        get numOfSensors(){
+            if(typeof this._numOfSensors === 'number'){
+                return this._numOfSensors;
+            } 
+            else {
+                return 'Sensors are currently down.'
+            }
+        },
+        set numOfSensors(num){
+            if(typeof num === "number" && num >= 0){
+
+                this._numOfSensors = num;
+
+            }
+            else{
+                console.log("Pass in a number that is greater than or equal to 0");
+            }
+        }
+    
+    };
+
+    robotFive.numOfSensors = 100;
+
+    console.log(robotFive.numOfSensors);
+
+    //Factory Functions
+
+    //A factory function is a function that returns an object and can be reused to make multiple object instances.
+
+    const robotFactory = (model,mobile) =>{
+    return{
+        model : model,
+        mobile : mobile,
+
+        beep(){
+            console.log("Beep Boop");
+        }
+    }
+    }
+
+    const tinCan = robotFactory("P-500",true);
+
+    tinCan.beep();
+
+    //Property Value Shorthand
+
+    //ES6 introduced some shortcuts for assigning properties to variables known as destructing.
+    
+    //We don't have to repeat ourselves for property assignments.
+
+    function robotFactoryTwo(model, mobile){
+        return {
+            model,
+            mobile,
+            beep() {
+            console.log('Beep Boop');
+            }
+        }
+    }
+
+    // To check that the property value shorthand technique worked:
+    const newRobot = robotFactoryTwo('P-501', false)
+    console.log(newRobot.model)
+    console.log(newRobot.mobile)
+
+    //Destructured Assignment
+
+    //We often want to extract key-value pairs from objects and save them as variables.
+
+    //We could take advantage of destructing technique called destructured assignment to save ourselves some keystrokes.
+
+    //In destructured assignment we create a variable with the name of an object's key that is wrapped in curly brakces {} and assign to it the object.
+
+    const robotSix = {
+        model: '1E78V2',
+        energyLevel: 100,
+        functionality: {
+            beep() {
+                console.log('Beep Boop');
+            },
+            fireLaser() {
+                console.log('Pew Pew');
+            },
+        }
+    };
+
+    const {functionality} = robotSix;
+
+    functionality.beep();
+
+    //Built-in Object Methods
+
+    //We have built in methods for Objects!
+
+    const robotSeven = {
+        model: 'SAL-1000',
+        mobile: true,
+        sentient: false,
+        armor: 'Steel-plated',
+        energyLevel: 75
+    };
+
+    // What is missing in the following method call?
+    const robotKeys = Object.keys(robotSeven);
+
+    console.log(robotKeys);
+
+    // Declare robotEntries below this line:
+    const robotEntries = Object.entries(robotSeven);
+
+
+    console.log(robotEntries);
+
+    // Declare newRobot below this line:
+    const newRobotTwo = Object.assign({laserBlaster: true, voiceRecognition: true},robotSeven);
+
+    console.log(newRobotTwo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
