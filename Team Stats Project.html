@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Team Stats
+
+    //By: Jeyason Jeyaparan
+
+    const team = {
+
+    _players : [
+        {
+            firstName : "Jeyason",
+            lastName : "Jeyaparan",
+            age : 18
+        },
+        {
+            firstName : "Billy",
+            lastName : "Batson",
+            age : 15
+        },
+        {
+            firstName : "Cristiano",
+            lastName : "Ronaldo",
+            age : 25
+        }
+    ],
+    _games : [
+        {
+            opponent : "Canada",
+            teamPoints : 44,
+            opponentPoints : 27
+        },
+        {
+            opponent : "America",
+            teamPoints : 50,
+            opponentPoints : 14
+        },
+        {
+            opponent : "Sri Lanka",
+            teamPoints : 56,
+            opponentPoints : 9
+        }
+    ],
+
+    get players(){
+        return this._players;
+    },
+    get games(){
+        return this._games;
+    },
+
+    addPlayer(firstName,lastName,age){
+        let player = {
+        firstName,
+        lastName,
+        age
+        }
+        this.players.push(player);
+    },
+    
+    addGame(opponent,teamPoints,opponentPoints){
+        const game = {
+        opponent,
+        teamPoints,
+        opponentPoints
+        }
+        this.games.push(game);
+        
+    }
+    
+    };
+
+    team.addPlayer("Steph","Curry",28);
+    team.addPlayer("Lisa","Leslie",44);
+    team.addPlayer("Bugs","Bunny",76);
+
+    console.log(team.players);
+
+    team.addGame("Titans",100,98);
+    team.addGame("FC Barcelona",8,1);
+    team.addGame("Toronto FC",2,10);
+
+    console.log(team.games);
+
+</script>
+
+</body>
+</html>
