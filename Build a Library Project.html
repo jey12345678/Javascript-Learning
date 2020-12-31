@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Build a Library
+
+    //By: Jeyason Jeyaparan
+
+    class Media{
+        constructor(title){
+            this._title = title;
+            this._ratings = [];
+            this._isCheckedOut = false;
+        }
+        get title(){
+            return this._title;
+        }
+        get isCheckedOut(){
+            return this._isCheckedOut;
+        }
+        get ratings(){
+            return this._ratings;
+        }
+        set isCheckedOut(checkedOut){
+            this._isCheckedOut = checkedOut;
+        }
+        toggleCheckOutStatus(){
+            this._isCheckedOut = !(this._isCheckedOut);
+        }
+        getAverageRating(){
+            let totalSum = this.ratings.reduce((accumulator,currentValue) =>{
+                return accumulator+currentValue;
+            })
+
+            let average = totalSum / this.ratings.length;
+
+            return average;
+        }
+
+        addRating(newRating){
+            if(newRating >= 1 && newRating <= 5){
+            this.ratings.push(newRating);
+            }
+            else{
+            console.log("Your additional rating is invalid.");
+            }
+        }
+
+    }
+
+    class Book extends Media{
+        constructor(author,title,pages){
+            super(title);
+            this._author = author;
+            this._pages = pages;
+        }
+        get author(){
+            return this._author;
+        }
+        get pages(){
+            return this._pages;
+        }
+    }
+
+    class Movie extends Media{
+        constructor(director,title,runTime){
+            super(title);
+            this._director = director;
+            this._runTime = runTime;
+            this._movieCast = ["Scarlett Johansson","Robert Downey, Jr.","Chris Evans"];
+        }
+        get director(){
+            return this._director;
+        }
+        get runTime(){
+            return this._runTime;
+        }
+        get movieCast(){
+            return this._movieCast;
+        }
+    }
+    class CD extends Media{
+        constructor(title,artist){
+            super(title);
+            this._artist = artist;
+            this._songTitles = ["Comeback Season","January 28th","Flashing Lights"];
+            this._songs  = ["I got ice all over my windshield I can tell it's gon' be a cold winter","The real is back, the ville is back","Flashing lights (lights, lights, lights)"];
+        }
+        get artist(){
+            return this._artist;
+        }
+        get songTitles(){
+            return this._songTitles;
+        }
+        get songs(){
+            return this._songs;
+        }
+        shuffle(){
+            let indexes = [];
+            while(indexes.length !== this.songs.length){
+                let randomIndex = Math.floor(Math.random()*this.songs.length);
+
+                if(indexes.indexOf(randomIndex) === -1){
+                    indexes.push(randomIndex);
+                }
+            }
+
+            let newArray = [];
+            for(let i = 0; i < indexes.length;i++){
+                newArray.push(this.songs[indexes[i]]);
+            }
+            return newArray;
+        }
+    }
+    class Catalog{
+        constructor(){
+            this._items = [];
+        }
+        get items(){
+            return this._items;
+        }
+        set items(items){
+            this._items = items;
+        }
+        addItem(item){
+            this._items.push(item);
+        }
+    }
+
+    const historyOfEverything = new Book("Bill Bryson","A Short History of Nearly Everything",544);
+
+    historyOfEverything.toggleCheckOutStatus();
+
+    console.log(historyOfEverything.isCheckedOut);
+
+    historyOfEverything.addRating(4);
+    historyOfEverything.addRating(5);
+    historyOfEverything.addRating(6);
+
+    console.log(historyOfEverything.getAverageRating());
+
+    const speed = new Movie("Jan de Bont","Speed",116);
+
+    speed.toggleCheckOutStatus();
+
+    console.log(speed.isCheckedOut);
+
+    speed.addRating(1);
+    speed.addRating(1);
+    speed.addRating(5);
+
+    console.log(speed.getAverageRating());
+
+    let newCd = new CD("2014 Forest Hills Drive","J.Cole");
+
+    console.log(newCd.shuffle());
+
+    const catalog = new Catalog();
+
+    catalog.addItem(newCd);
+    catalog.addItem(speed);
+    catalog.addItem(historyOfEverything);
+
+    console.log(catalog.items);
+
+    
+</script>
+
+</body>
+</html>
