@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Intermediate Javascript Modules
+    //module.exports
+
+    //We could get started with modules by defining a module in one file and making the module available for use in another file with Node.js module.exports syntax.
+    //Every JavaScript file run in Node has a local module object with an exports property used to define what should be exported from the file.
+
+    //The pattern we use to export moduels is:
+    //1. Create an object to represent the module.
+    //2. Add properties or methods to the module object.
+    //3.Export the module with module.exports.
+
+    let Airplane = {};
+    Airplane.myAirplane = "StarJet";
+    module.exports = Airplane;
+
+    //require()
+
+    //In Node.js use the require function to import modules.
+
+
+</script>
+
+</body>
+</html>
