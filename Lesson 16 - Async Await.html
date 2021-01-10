@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Async await
+
+    //In web development, we need to handle asynchronous actions - actions we can wait on while moving on to other tasks.
+
+    //We make requests to networks, databases, or any number of similar operations.
+
+    //JavaScript is non-blocking, instead of stopping the execution of code while it waits, JavaScript uses an event loop which allows it to efficiently execute other tasks while it awaits the completion of these asynchronous actions.
+
+    //With ES6 JavaScript integrated native promises which allows us to write significantly more readable code.
+
+    //JavaScript is continually improving, and ES8 provides a new syntax for handling our asynchronous action, async...await.
+
+    //The async await syntax allows us to write asynchronous code that reads similarly to traditional synchronous, imperative programs.
+
+    //async await improves the readability and scalability of our code.
+
+    //app.js
+
+    /* const fs = require('fs');
+    const promisifiedReadfile = require('./promisifiedReadfile');
+        
+    // Here we use fs.readfile() and callback functions:
+    fs.readFile('./file.txt', 'utf-8', (err, data) => {
+    if (err) throw err;
+    let firstSentence = data;
+    fs.readFile('./file2.txt',  'utf-8', (err, data) => {
+        if (err) throw err;
+        let secondSentence = data;
+        console.log(firstSentence, secondSentence)
+    });
+    });
+
+    // Here we use native promises with our "promisified" version of readfile:
+    let firstSentence
+    promisifiedReadfile('./file.txt', 'utf-8')
+    .then((data) => {
+        firstSentence = data;
+        return promisifiedReadfile('./file2.txt', 'utf-8')
+    })
+    .then((data) => {
+        let secondSentence = data;
+        console.log(firstSentence, secondSentence)
+    })
+    .catch((err) => {console.log(err)});
+
+    // Here we use promisifiedReadfile() again but instead of using the native promise .then() syntax, we declare and invoke an async/await function:
+    async function readFiles() {
+    let firstSentence = await promisifiedReadfile('./file.txt', 'utf-8')
+    let secondSentence = await promisifiedReadfile('./file2.txt', 'utf-8')
+    console.log(firstSentence, secondSentence)
+    }
+    readFiles() */
+
+    //file.txt
+    //This is the first sentence.
+
+    //file2.txt
+    //This is the second sentence.
+
+    //The async keyword
+
+    //The async keyword is used to write funcitons that handle asynchronous actions.
+    //We wrap our asynchronous logic inside a function prepended with the async keyword.
+    //Then we invoke that function.
+
+    //app.js
+
+    /* function withConstructor(num){
+        return new Promise((resolve, reject) => {
+            if (num === 0){
+            resolve('zero');
+            } else {
+            resolve('not zero');
+            }
+        })
+    }
+
+    withConstructor(0)
+    .then((resolveValue) => {
+        console.log(` withConstructor(0) returned a promise which resolved to: ${resolveValue}.`);
+    })
+
+    async function withAsync(num){
+        if(num === 0){
+            return "zero";
+        }
+        else{
+            return "not zero";
+        }
+    }
+
+    //Leave this commented out until step 3:
+
+    withAsync(100).then((resolveValue) => {
+        console.log(` withAsync(100) returned a promise which resolved to: ${resolveValue}.`);
+    }); */
+
+    //bash
+
+    /* 
+    $ node app.js
+    shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+    path.js:1142
+            cwd = process.cwd();
+                            ^
+
+    Error: ENOENT: no such file or directory, uv_cwd
+        at Object.resolve (path.js:1142:25)
+        at startup (bootstrap_node.js:129:32)
+        at bootstrap_node.js:542:3
+    $  
+    */
+
+    //The await Operator
+
+    //In the last exercise, we covered the async keyword. By itself, it doesn't do much; async functions are almost always used with the additional keyword await inside the function body.
+
+    //The await keyword can only be used inside an async function.
+
+    //await is an operator, it returns the resolved value of a promise.
+
+
+    //app.js
+
+  /*const brainstormDinner = require('./library.js')
+
+
+    // Native promise version:
+    function nativePromiseDinner() {
+    brainstormDinner().then((meal) => {
+        console.log(`I'm going to make ${meal} for dinner.`);
+    })
+    }
+
+
+    // async/await version:
+    async function announceDinner() {
+    let meal = await brainstormDinner();
+
+    console.log(`I'm going to make ${meal} for dinner.`);
+    
+    }
+
+    announceDinner(); */
+
+    //library.js
+
+    /*
+    this is the brainstormDinner function. It's a little silly. It returns a promise that uses a series of setTimeout() functions to simulate a time-consuming asynchronous action. It's a good example of "callback hell" or "the pyramid of doom," two ways people describe how confusing a bunch of nested callback functions can become.
+    */
+
+/*  const brainstormDinner = () => {
+        return new Promise((resolve, reject) => {
+            console.log(`I have to decide what's for dinner...`)
+            setTimeout(() => {
+                console.log('Should I make salad...?')
+                setTimeout(() => {
+                    console.log('Should I make ramen...?')
+                    setTimeout(() => {
+                        console.log('Should I make eggs...?')
+                        setTimeout(() => {
+                            console.log('Should I make chicken...?')
+                            resolve('beans')
+                        }, 1000)
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+        })
+    }
+
+    module.exports = brainstormDinner */
+
+    //bash
+
+    /* 
+    $ node app.js
+    I have to decide what's for dinner...
+    Should I make salad...?
+    Should I make ramen...?
+    Should I make eggs...?
+    Should I make chicken...?
+    I'm going to make beans for dinner.
+    */
+
+    //Writing async Functions
+
+    //We've seen that the await keyword halts the execution of an async function until a promise is no longer pending.
+
+    //Don't forget the await keyword, as if you do, it will be a tricky mistake to catch as function will still run, without the desired results.
+
+    //app.js
+
+    /* 
+    const shopForBeans = require('./library.js');
+
+    async function getBeans() {
+    console.log(`1. Heading to the store to buy beans...`);
+    let value = await shopForBeans();
+        console.log(`3. Great! I'm making ${value} beans for dinner tonight!`);
+    }
+
+    getBeans(); 
+    */
+
+    //library.js
+
+    /*
+    This is the shopForBeans function. It uses a setTimeout() function to simulate a time-consuming asynchronous action. The function returns a promise with a resolved value of a string representing a type of bean. It settles on a random beanType from the beanTypes array using Math.random().
+    */
+
+    /* 
+    const shopForBeans = () => {
+        return new Promise((resolve, reject) => {
+            const beanTypes = ['kidney', 'fava', 'pinto', 'black', 'garbanzo'];
+            setTimeout(()=>{
+                let randomIndex = Math.floor(Math.random() * 5)
+                let beanType = beanTypes[randomIndex];
+                console.log(`2. I bought ${beanType} beans because they were on sale.`)
+                resolve(beanType);
+            }, 1000)
+        })
+    }
+    
+    module.exports = shopForBeans 
+    */
+
+    //bash
+
+    /* 
+    $ node app.js
+    1. Heading to the store to buy beans...
+    2. I bought kidney beans because they were on sale.
+    3. Great! I'm making kidney beans for dinner tonight!
+    $  
+    */
+
+    //Handling Dependent Promises
+
+    //The true beauty of async await is when we have a series of asynchronous actions which depend on one another.
+
+    //app.js
+
+    /* 
+    const {shopForBeans, soakTheBeans, cookTheBeans} = require('./library.js');
+
+    async function makeBeans(){
+        const type = await shopForBeans();
+
+        let isSoft = await soakTheBeans(type);
+
+        let dinner = await cookTheBeans(isSoft);
+        console.log(dinner);
+
+    }
+    makeBeans();
+    */
+
+    //library.js
+
+    /*
+    /* This is the shopForBeans function from the last exercise
+    */
+    /*
+    const shopForBeans = () => {
+        return new Promise((resolve, reject) => {
+            const beanTypes = ['kidney', 'fava', 'pinto', 'black', 'garbanzo'];
+            setTimeout(()=>{
+                let randomIndex = Math.floor(Math.random() * 5)
+                let beanType = beanTypes[randomIndex];
+                console.log(`I bought ${beanType} beans because they were on sale.`)
+                resolve(beanType);
+            }, 1000)
+        })
+    }
+
+    let soakTheBeans = (beanType) => {
+    return new Promise((resolve, reject) => {
+        console.log('Time to soak the beans.')
+        setTimeout(()=>{
+        console.log(`... The ${beanType} beans are softened.`)
+        resolve(true)
+        }, 1000)
+    })
+    }
+
+    let cookTheBeans = (isSoftened) => {
+    return new Promise((resolve, reject) => {
+        console.log('Time to cook the beans.')
+        setTimeout(()=>{
+        if (isSoftened) {
+            console.log('... The beans are cooked!') 
+            resolve('\n\nDinner is served!')
+        }
+        }, 1000)
+    })
+    }
+
+    
+    module.exports = {shopForBeans, soakTheBeans, cookTheBeans} 
+    */
+
+    //bash
+
+    /*
+    $ node app.js
+    shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+    path.js:1142
+            cwd = process.cwd();
+                            ^
+
+    Error: ENOENT: no such file or directory, uv_cwd
+        at Object.resolve (path.js:1142:25)
+        at startup (bootstrap_node.js:129:32)
+        at bootstrap_node.js:542:3
+    $
+    */
+
+    //Handling Errors
+
+    //When .catch() is used with the long promise chain, there is no indication of where in the chain the error was thrown.
+
+    //This makes debugging challenging.
+
+    //With async await, we could use try...catch statements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code but we can also catch both synchronous and asynchronous errors.
+
+    //This makes for easier debugging.
+
+    //app.js
+    /* 
+
+    const cookBeanSouffle = require('./library.js');
+
+    async function hostDinnerParty(){
+        try{
+            let cookedBeanSouffle = await cookBeanSouffle();
+            console.log(`${cookedBeanSouffle} is served!`)
+        }
+        catch(error){
+            console.log(error);
+            console.log("Ordering a pizza!");
+        }
+    }
+    hostDinnerParty(); 
+    
+    */
+
+    //library.js
+
+    //This function returns true 50% of the time.
+
+    /*
+
+   let randomSuccess = () => {
+        let num = Math.random();
+        if (num < .5 ){
+            return true;
+        } 
+        else {
+            return false;
+        }
+    };
+
+    //This function returns a promise that resolves half of the time and rejects half of the time
+    let cookBeanSouffle = () => {
+        return new Promise((resolve, reject) => {
+            console.log('Fingers crossed... Putting the Bean Souffle in the oven');
+            setTimeout(()=>{
+                let success = randomSuccess();
+                if(success){
+                    resolve('Bean Souffle');
+                } 
+                else {
+                    reject('Dinner is ruined!');
+                }
+            }, 1000);
+        })
+    };
+
+    module.exports = cookBeanSouffle;
+
+    */
+
+    //bash
+
+    /*
+
+    $ node app.js
+    Fingers crossed... Putting the Bean Souffle in the oven
+    Bean Souffle is served!
+    $ node app.js
+    Fingers crossed... Putting the Bean Souffle in the oven
+    Dinner is ruined!
+    Ordering a pizza!
+    $
+
+    */
+
+    //Handling Independent Promises
+
+    //Remember that await halts the execution of our async function.
+
+    //This allows us to conveniently write synchronous-style code to handle dependent promises.
+
+    //In the waiting() function we pause our function until the first promise resolves then we construct the second promise.
+
+    //Then we construct the second promise and once thats resolved we print both resolved values to the console.
+
+    //In our concurrent() function both promises are constructed using the await. We then await each of their resolutons to print them to the console.
+
+    //app.js
+
+   /*  let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
+
+    async function serveDinner(){
+        let vegetablePromise =  steamBroccoli();
+        let starchPromise =  cookRice();
+        let proteinPromise =  bakeChicken();
+        let sidePromise =  cookBeans();
+
+        console.log(`Dinner is served. We're having ${await vegetablePromise}, ${await starchPromise}, ${await proteinPromise}, and ${await sidePromise}.`)
+
+    }
+
+    serveDinner();
+
+    //library.js
+
+    let cookBeans = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('beans')
+            }, 1000)
+        })
+    }
+
+    let steamBroccoli = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('broccoli')
+            }, 1000)
+        })
+    }
+
+    let cookRice = () => {
+            return new Promise ((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve('rice')
+                }, 1000)
+            })
+    }
+
+    let bakeChicken = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('chicken')
+            }, 1000)
+        })
+    }
+
+    module.exports = {cookBeans, steamBroccoli, cookRice, bakeChicken}
+ */
+
+    //bash
+
+    /* $ node app.js
+    Dinner is served. We're having broccoli, rice, chicken, and beans.
+    $ */
+
+    //Await Promise.all()
+
+    //Another way to take advantage of concurrency when we have multiple promises which can be executed simultaneously is to await a Promise.all().
+
+    //We can pass an array of promises as the argument to Promise.all(), and it will return a single promise. This promise will resolve when all of the promises in the argument array have resolved.
+
+    //This promise's resolve value will be an array containing the resolved values of each promise from the argument array.
+
+    //Promise.all() allows us to take advantage of asynchronicity, as multiple tasks could be processed concurrently.
+
+    //It also has the benefit of failing fast, which means that it won't wait for the rest of the asynchronous actions to complete once any one has rejected.
+
+    //As soon as the first promise in the array rejects, the promise returned from Promise.all() will reject with that reason.
+
+    //As it was when working with native promises, Promise.all() is a good chocie if multiple asynchronous tasks are required, but none must wait for any other executing.
+
+    //app.js
+/* 
+    let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
+
+    async function serveDinnerAgain(){
+        let foodArray = await Promise.all([steamBroccoli(),cookRice(),bakeChicken(),cookBeans()]);
+
+        console.log(`Dinner is served. We're having ${foodArray[0]}, ${foodArray[1]}, ${foodArray[2]}, and ${foodArray[3]}.`);
+    }
+
+    serveDinnerAgain(); */
+
+    //library.js
+
+/*     let cookBeans = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('beans')
+            }, 1000)
+        })
+    }
+
+    let steamBroccoli = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('broccoli')
+            }, 1000)
+        })
+    }
+
+    let cookRice = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('rice')
+            }, 1000)
+        })
+    }
+
+    let bakeChicken = () => {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=>{
+                resolve('chicken')
+            }, 1000)
+        })
+    }
+
+    module.exports = {cookBeans, steamBroccoli, cookRice, bakeChicken} */
+
+    //bash
+    
+    /* 
+    $ node app.js
+    Dinner is served. We're having broccoli, rice, chicken, and beans.
+    $ 
+    */
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

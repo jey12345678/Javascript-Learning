@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myH"></h1>
+<p id="myP"></p>
+
+<script>
+
+    //Javascript Promises
+
+    //What is a Promise?
+
+    //Promises are objects that represent the eventual outcome of an asynchronous operation.
+    //A Promise object can be in one of the three states:
+
+    //Pending: The initial state— the operation has not completed yet.
+
+    //Fulfilled: The operation has completed successfully and the promise now has a resolved value.
+
+    //Rejected: The operation has failed and the promise has a reason for failure.
+
+    //Constructing a Promise object.
+
+    //To create a new Promise object, we use the new keyword and the Promise constructor method.
+
+/*     const inventory = {
+        sunglasses: 1000,
+        pants: 1088,
+        bags: 1344
+    };
+
+    // Write your code below:
+    function myExecutor(resolve,reject){
+        if(inventory.sunglasses > 0){
+            resolve('Sunglasses order processed.');
+        }
+        else{
+            reject('That item is sold out.');
+        }
+    }
+    const orderSunglasses = () =>{
+        let promise = new Promise(myExecutor);
+        return promise;
+    }
+
+    let orderPromise = orderSunglasses();
+
+    console.log(orderPromise);
+ */
+
+ //bash
+
+ //resolve
+
+/*  $ node app.js
+Promise { 'Sunglasses order processed.' }
+$ */
+
+//reject
+
+/* $ node app.js
+Promise { <rejected> 'That item is sold out.' }
+(node:54) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): That item is sold out.
+(node:54) DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code. */
+
+//The Node setTimeout() Function
+
+//Knowing how to construct a promise is useful but knowing how to use promises are key.
+
+//I'm going to be Handling Promise objects returned to me as the result of an asynchronous operation instead of constructing promises.
+
+//setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay.
+
+//setTimeout() has two parameters a callback function and a delay in milliseconds.
+
+/* console.log("This is the first line of code in app.js.");
+
+function usingSTO(){
+  console.log("lol.");
+
+}
+
+setTimeout(usingSTO,3000);
+
+
+console.log("This is the last line of code in app.js."); */
+
+//bash
+
+/* $ node app.js
+This is the first line of code in app.js.
+This is the last line of code in app.js.
+lol. //Came 3000 milliseconds later.
+$ node app.js
+This is the first line of code in app.js.
+This is the last line of code in app.js.
+lol. //Came 2000 milliseconds later.
+$ node app.js
+This is the first line of code in app.js.
+This is the last line of code in app.js.
+lol. //Came 1000 milliseconds later.
+$  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
